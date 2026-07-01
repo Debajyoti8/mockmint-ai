@@ -1,0 +1,276 @@
+.settings-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+}
+
+@media (min-width: 768px) {
+  .settings-container {
+    padding: var(--space-8, 32px) var(--space-4, 16px);
+    gap: var(--space-8, 32px);
+  }
+}
+
+/* Header */
+.settings-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.settings-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary, #fafafa);
+  margin-top: var(--space-2, 8px);
+}
+
+.settings-header p {
+  color: var(--text-secondary, #a1a1aa);
+  font-size: 1rem;
+}
+
+.btn-back {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  background-color: transparent;
+  color: var(--text-muted, #71717a);
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm, 6px);
+  transition: all var(--transition-fast, 150ms);
+}
+
+.btn-back:hover {
+  color: var(--text-primary, #fafafa);
+  background-color: var(--bg-hover, #222228);
+}
+
+/* Responsive Grid Layout */
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: var(--space-6, 24px);
+}
+
+@media (min-width: 992px) {
+  .settings-grid {
+    grid-template-columns: 4.5fr 5.5fr;
+  }
+}
+
+.left-panel, .right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+}
+
+/* Cards & Layout */
+.settings-card {
+  background-color: var(--bg-secondary, #111113);
+  border: 1px solid var(--border-primary, #27272a);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-6, 24px);
+  box-shadow: var(--shadow-md);
+}
+
+.settings-card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #fafafa);
+  margin-bottom: var(--space-4, 16px);
+}
+
+.card-sub {
+  color: var(--text-muted, #71717a);
+  font-size: 0.85rem;
+  margin-top: calc(-1 * var(--space-2, 8px));
+  margin-bottom: var(--space-6, 24px);
+  line-height: 1.4;
+}
+
+/* Profile Details details */
+.profile-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  margin-bottom: var(--space-6, 24px);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  border-bottom: 1px solid var(--border-primary, #27272a);
+  padding-bottom: var(--space-3, 12px);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  color: var(--text-muted, #71717a);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  color: var(--text-primary, #fafafa);
+  font-weight: 500;
+}
+
+/* Stats widgets panel */
+.stats-sub-panel {
+  border-top: 1px solid var(--border-primary, #27272a);
+  padding-top: var(--space-4, 16px);
+  margin-top: var(--space-4, 16px);
+}
+
+.stats-sub-panel h3 {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #a1a1aa);
+  font-weight: 600;
+  margin-bottom: var(--space-3, 12px);
+}
+
+.stats-grid-row {
+  display: flex;
+  gap: var(--space-4, 16px);
+}
+
+.stat-box {
+  flex: 1;
+  background-color: var(--bg-tertiary, #1a1a1f);
+  border: 1px solid var(--border-primary, #27272a);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1, 4px);
+}
+
+.stat-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-family-mono, monospace);
+  color: var(--text-primary, #fafafa);
+}
+
+.stat-txt {
+  font-size: 0.75rem;
+  color: var(--text-muted, #71717a);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Theme forms controller */
+.control-group-settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.control-group-settings label {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #a1a1aa);
+  font-weight: 600;
+}
+
+.theme-select-form {
+  background-color: var(--bg-tertiary, #1a1a1f);
+  border: 1px solid var(--border-primary, #27272a);
+  border-radius: var(--radius-md, 8px);
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  color: var(--text-primary, #fafafa);
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  width: 100%;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.1rem;
+}
+
+.theme-select-form:focus {
+  border-color: var(--accent-primary, #818cf8);
+}
+
+/* Security change password form styling */
+.security-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.form-item label {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #a1a1aa);
+  font-weight: 600;
+}
+
+.form-item input {
+  background-color: var(--bg-tertiary, #1a1a1f);
+  border: 1px solid var(--border-primary, #27272a);
+  border-radius: var(--radius-md, 8px);
+  padding: 0.75rem 1rem;
+  color: var(--text-primary, #fafafa);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-fast, 150ms);
+}
+
+.form-item input:focus {
+  border-color: var(--accent-primary, #818cf8);
+}
+
+.btn-submit-security {
+  margin-top: var(--space-4, 16px);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+/* Settings Alert Feedback */
+.settings-alert {
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: var(--space-4, 16px);
+  line-height: 1.5;
+}
+
+.settings-alert.success {
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--color-success, #22c55e);
+}
+
+.settings-alert.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--color-error, #ef4444);
+}

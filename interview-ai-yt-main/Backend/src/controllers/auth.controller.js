@@ -144,11 +144,68 @@ async function getMeController(req, res) {
     })
 }
 
+/**
+ * @description Change user password, invalidating current session on success.
+ */
+async function changePasswordController(req, res) {
+    const { currentPassword, newPassword } = req.body
 
+    // 1. Basic validation
+    if (!currentPassword || !newPassword) {
+        return res.status(400).json({
+            message: "Current password and new password are required."
+        })
+    }
+
+    if (newPassword.length < 6) {
+        return res.status(400).json({
+            message: "New password must be at least 6 characters long."
+        })
+    }
+
+    if (currentPassword === newPassword) {
+        return res.status(400).json({
+            message: "New password cannot be the same as your current password."
+        })
+    }
+
+    // 2. Fetch user
+    const user = await userModel.findById(req.user.id)
+    if (!user) {
+        return res.status(404).json({
+            message: "User not found."
+        })
+    }
+
+    // 3. Verify current password
+    const isPasswordValid = await bcrypt.compare(currentPassword, user.password)
+    if (!isPasswordValid) {
+        return res.status(400).json({
+            message: "Invalid current password."
+        })
+    }
+
+    // 4. Hash and save new password
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10)
+    user.password = hashedNewPassword
+    await user.save()
+
+    // 5. Clear cookie token session
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax"
+    })
+
+    res.status(200).json({
+        message: "Password updated successfully. Please log in again."
+    })
+}
 
 module.exports = {
     registerUserController,
     loginUserController,
     logoutUserController,
-    getMeController
+    getMeController,
+    changePasswordController
 }

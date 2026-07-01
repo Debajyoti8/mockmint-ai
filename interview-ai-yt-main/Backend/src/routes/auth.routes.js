@@ -36,4 +36,12 @@ authRouter.get("/logout", authController.logoutUserController)
 authRouter.get("/get-me", authMiddleware.authUser, authController.getMeController)
 
 
+/**
+ * @route POST /api/auth/change-password
+ * @description update current user password
+ * @access private
+ */
+authRouter.post("/change-password", authMiddleware.authUser, authController.changePasswordController)
+
+
 module.exports = authRouter

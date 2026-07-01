@@ -8,6 +8,7 @@ import Home from "@/features/interview/pages/Home"
 import InterviewReport from "@/features/interview/pages/InterviewReport"
 import SessionHistory from "@/features/interview/pages/SessionHistory"
 import Analytics from "@/features/dashboard/pages/Analytics"
+import Settings from "@/features/dashboard/pages/Settings"
 
 export const router = createBrowserRouter([
     {
@@ -37,5 +38,9 @@ export const router = createBrowserRouter([
     {
         path: "/analytics",
         element: <ProtectedRoute><Analytics /></ProtectedRoute>
+    },
+    {
+        path: "/settings",
+        element: <ProtectedRoute><Settings /></ProtectedRoute>
     }
 ])

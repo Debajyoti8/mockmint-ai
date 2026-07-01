@@ -62,3 +62,20 @@
   --transition-fast: 150ms ease-out;
   --transition-normal: 250ms ease-in-out;
 }
+
+/* Light Theme Variable Overrides */
+:root[data-theme="light"] {
+  --bg-primary: #f4f4f5;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e4e4e7;
+  --bg-hover: #f1f1f3;
+  --border-primary: #d4d4d8;
+  --border-secondary: #a1a1aa;
+
+  --text-primary: #09090b;
+  --text-secondary: #27272a;
+  --text-muted: #71717a;
+  --text-inverse: #fafafa;
+  --accent-surface: rgba(129, 140, 248, 0.05);
+}
+
