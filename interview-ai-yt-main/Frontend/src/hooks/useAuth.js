@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react";
-import { AuthContext } from "@/context/AuthContext";
-import { login, register, logout, getMe } from "@/features/auth/services/auth.api";
+import { useContext, useEffect } from "react"
+import { AuthContext } from "@/context/AuthContext"
+import { login, register, logout, getMe } from "@/features/auth/services/auth.api"
+import { getErrorMessage } from "@/utils/error-handler"
 
 export const useAuth = () => {
     const context = useContext(AuthContext)
@@ -11,8 +12,10 @@ export const useAuth = () => {
         try {
             const data = await login({ email, password })
             setUser(data.user)
+            return { success: true }
         } catch (err) {
             console.error(err)
+            return { success: false, error: getErrorMessage(err) }
         } finally {
             setLoading(false)
         }
@@ -23,8 +26,10 @@ export const useAuth = () => {
         try {
             const data = await register({ username, email, password })
             setUser(data.user)
+            return { success: true }
         } catch (err) {
             console.error(err)
+            return { success: false, error: getErrorMessage(err) }
         } finally {
             setLoading(false)
         }
@@ -35,8 +40,10 @@ export const useAuth = () => {
         try {
             await logout()
             setUser(null)
+            return { success: true }
         } catch (err) {
             console.error(err)
+            return { success: false, error: getErrorMessage(err) }
         } finally {
             setLoading(false)
         }

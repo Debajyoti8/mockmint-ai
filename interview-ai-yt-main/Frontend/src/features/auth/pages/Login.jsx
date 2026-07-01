@@ -11,11 +11,17 @@ const Login = () => {
 
     const [ email, setEmail ] = useState("")
     const [ password, setPassword ] = useState("")
+    const [ error, setError ] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await handleLogin({email,password})
-        navigate('/')
+        setError("")
+        const result = await handleLogin({ email, password })
+        if (result.success) {
+            navigate('/')
+        } else {
+            setError(result.error)
+        }
     }
 
     if(loading){
@@ -27,18 +33,19 @@ const Login = () => {
         <main>
             <div className="form-container">
                 <h1>Login</h1>
+                {error && <p style={{ color: "#ef4444", fontSize: "0.9rem", marginBlock: "0.25rem" }}>{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
                         <input
                             onChange={(e) => { setEmail(e.target.value) }}
-                            type="email" id="email" name='email' placeholder='Enter email address' />
+                            type="email" id="email" name='email' placeholder='Enter email address' required />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
                         <input
                             onChange={(e) => { setPassword(e.target.value) }}
-                            type="password" id="password" name='password' placeholder='Enter password' />
+                            type="password" id="password" name='password' placeholder='Enter password' required />
                     </div>
                     <button className='button primary-button' >Login</button>
                 </form>
