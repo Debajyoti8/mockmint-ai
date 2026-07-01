@@ -102,7 +102,16 @@ const Dashboard = () => {
         <div className="dashboard-grid">
           {/* Progress Summary Card */}
           <div className="dashboard-card metrics-card">
-            <h2>Preparation Progress</h2>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-4, 16px)" }}>
+              <h2 style={{ margin: 0 }}>Preparation Progress</h2>
+              <button 
+                onClick={() => navigate("/analytics")} 
+                className="btn-logout" 
+                style={{ padding: "0.4rem 0.8rem", fontSize: "0.8rem", border: "1px solid var(--border-primary, #27272a)", color: "var(--accent-primary, #818cf8)" }}
+              >
+                View Insights →
+              </button>
+            </div>
             <div className="metrics-row">
               <div className="metric-box">
                 <span className="metric-value">{totalSessions}</span>

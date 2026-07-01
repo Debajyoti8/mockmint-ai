@@ -1,4 +1,5 @@
 const pdfParse = require("pdf-parse")
+const mongoose = require("mongoose")
 const { generateInterviewReport, generateResumePdf } = require("../services/ai.service")
 const interviewReportModel = require("../models/interviewReport.model")
 
@@ -101,11 +102,25 @@ async function generateResumePdfController(req, res) {
 async function deleteInterviewReportController(req, res) {
     const { interviewId } = req.params
 
-    const report = await interviewReportModel.findOneAndDelete({ _id: interviewId, user: req.user.id })
+    // 1. Validate ID format first
+    if (!mongoose.Types.ObjectId.isValid(interviewId)) {
+        return res.status(400).json({
+            message: "Invalid interview session ID format."
+        })
+    }
 
+    // 2. Perform atomic deletion with ownership verification.
+    // Returns the deleted document if found and owned, or null otherwise.
+    const report = await interviewReportModel.findOneAndDelete({
+        _id: interviewId,
+        user: req.user.id
+    })
+
+    // 3. Prevent resource enumeration:
+    // If null, return a generic 404 response whether it was missing or owned by another user.
     if (!report) {
         return res.status(404).json({
-            message: "Interview report not found or unauthorized."
+            message: "Interview report not found."
         })
     }
 
