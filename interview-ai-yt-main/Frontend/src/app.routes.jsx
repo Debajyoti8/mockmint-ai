@@ -5,7 +5,7 @@ import Register from "@/features/auth/pages/Register"
 import ProtectedRoute from "@/components/layout/ProtectedRoute"
 import Dashboard from "@/features/dashboard/pages/Dashboard"
 import Home from "@/features/interview/pages/Home"
-import Interview from "@/features/interview/pages/Interview"
+import InterviewReport from "@/features/interview/pages/InterviewReport"
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +26,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "/interview/:interviewId",
-        element: <ProtectedRoute><Interview /></ProtectedRoute>
+        element: <ProtectedRoute><InterviewReport /></ProtectedRoute>
     }
 ])
