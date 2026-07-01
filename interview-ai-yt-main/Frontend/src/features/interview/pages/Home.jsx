@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '@/hooks/useInterview.js'
 import { useNavigate } from 'react-router'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 
 const Home = () => {
@@ -20,11 +21,7 @@ const Home = () => {
     }
 
     if (loading) {
-        return (
-            <main className='loading-screen'>
-                <h1>Loading your interview plan...</h1>
-            </main>
-        )
+        return <LoadingSpinner fullScreen message="Generating your interview strategy..." />
     }
 
     return (
