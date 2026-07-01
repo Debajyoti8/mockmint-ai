@@ -147,11 +147,19 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Recent Interviews List Card */}
           <div className="dashboard-card list-card">
             <div className="card-header-row">
               <h2>Recent Prep Sessions</h2>
-              <span className="item-count">Showing {Math.min(5, totalSessions)} of {totalSessions}</span>
+              <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                <button 
+                  onClick={() => navigate("/history")} 
+                  className="btn-logout" 
+                  style={{ padding: "0.4rem 0.8rem", fontSize: "0.8rem", border: "1px solid var(--border-primary, #27272a)", color: "var(--accent-primary, #818cf8)" }}
+                >
+                  View History →
+                </button>
+                <span className="item-count">Showing {Math.min(5, totalSessions)} of {totalSessions}</span>
+              </div>
             </div>
             <div className="sessions-list">
               {reports.slice(0, 5).map((report) => (

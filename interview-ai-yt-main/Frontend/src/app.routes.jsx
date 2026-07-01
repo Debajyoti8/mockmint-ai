@@ -6,6 +6,7 @@ import ProtectedRoute from "@/components/layout/ProtectedRoute"
 import Dashboard from "@/features/dashboard/pages/Dashboard"
 import Home from "@/features/interview/pages/Home"
 import InterviewReport from "@/features/interview/pages/InterviewReport"
+import SessionHistory from "@/features/interview/pages/SessionHistory"
 
 export const router = createBrowserRouter([
     {
@@ -27,5 +28,9 @@ export const router = createBrowserRouter([
     {
         path: "/interview/:interviewId",
         element: <ProtectedRoute><InterviewReport /></ProtectedRoute>
+    },
+    {
+        path: "/history",
+        element: <ProtectedRoute><SessionHistory /></ProtectedRoute>
     }
 ])
